@@ -1,25 +1,3 @@
-const dark = "click";
-let boton = document.getElementById("moon");
-boton.addEventListener(dark, eventoMoon);
-function eventoMoon() {
-     
-        let colorMode = document.getElementById("principal");
-        colorMode.className = ("color");
-        let footer = document.getElementById("footer");
-        footer.className = ("color");
-}
-
-let boton2 = document.getElementById("sun");
-boton2.addEventListener(dark, eventoSun);
-function eventoSun() {
-     
-        let colorMode2 = document.getElementById("principal");
-        colorMode2.className = ("color2");
-        let footer2 = document.getElementById("footer");
-        footer2.className = ("color2");
-} 
-
-
 let stockProductos = [
         {id: 1, nombre: "Aloe", precio: 800,img: '../media/producto12.jpeg'},
         {id: 2, nombre: "Alegría", precio: 400,img: '../media/producto13.jpeg'},
@@ -29,8 +7,30 @@ let stockProductos = [
         {id: 6, nombre: "Cactus", precio: 200, img: '../media/producto17.jpeg'}
     ] 
 
- 
- 
+
+let mode = prompt("¿Quieres establecer el modo oscuro? Responda con si o con no.")
+let colorModeInicio = document.getElementById("principal");
+let colorModeFooter = document.getElementById("footer");
+mode === "si"?  colorModeInicio.className = ("color") : colorModeInicio.className = ("color2");
+mode === "si"?  colorModeFooter.className = ("color") : colorModeFooter.className = ("color2");
+mode==="si" && alert("¡Excelente! Modo oscuro activado, recuerda que puede desactivarlo haciendo click sobre el sol!");
+
+const dark = "click";
+let botonDark = document.getElementById("moon");
+botonDark.addEventListener ('click', () => {
+        let colorMode1 = document.getElementById("principal");
+        colorMode1.className = ("color");
+        let footer1 = document.getElementById("footer");
+        footer1.className = ("color");
+})
+let botonLight = document.getElementById("sun");
+botonLight.addEventListener ('click', () => {
+        let colorMode2 = document.getElementById("principal");
+        colorMode2.className = ("color2");
+        let footer2 = document.getElementById("footer");
+        footer2.className = ("color2");
+})
+
 
 const contenedorProductos = document.getElementById('contenedor-productos');
 
@@ -83,5 +83,7 @@ formulario.addEventListener ('submit', (e) => {
     console.log(formulario.children[2].value);
     console.log(formulario.children[4].value);
     console.log(formulario.children[8].value);
-}); 
+});
+
+ 
  

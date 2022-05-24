@@ -1,0 +1,20 @@
+const dark = "click";
+let boton = document.getElementById("moon");
+boton.addEventListener(dark, eventoMoon);
+function eventoMoon() {
+     
+        let colorMode = document.getElementById("principal");
+        colorMode.className = ("color");
+        let footer = document.getElementById("footer");
+        footer.className = ("color");
+}
+
+let boton2 = document.getElementById("sun");
+boton2.addEventListener(dark, eventoSun);
+function eventoSun() {
+     
+        let colorMode2 = document.getElementById("principal");
+        colorMode2.className = ("color2");
+        let footer2 = document.getElementById("footer");
+        footer2.className = ("color2");
+} 
