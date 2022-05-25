@@ -9,25 +9,15 @@ class Producto {
         this.id = id;
     }
 }
-/*
-const helecho = new Producto("Helecho", "Planta de interior", 1250, "../media/producto2.jpeg", 1);
-const bromelia = new Producto("Bromelia", "Planta de exterior", 250, "../media/producto2.jpeg", 2);
-const bonsai = new Producto("Bonsai", "Planta de interior", 350, "../media/producto2.jpeg", 3);
-const acebo = new Producto("Acebo", "Planta de exterior", 1700, "../media/producto2.jpeg", 4);
-const aralia = new Producto("Aralia", "Artículo" , 600, "../media/producto2.jpeg", 5);
-const boniato = new Producto("Boniato", "Planta de exterior", 700, "../media/producto2.jpeg", 6);
  
-const baseDeDatosRopa = [helecho, bromelia, bonsai, acebo, aralia, boniato];
+const bidens = new Producto("Bidens", "Planta de interior", 450, "../media/producto14.jpeg", 1);
+const galanga = new Producto("Galanga", "Planta de exterior", 450, "../media/producto14.jpeg", 2);
+const hinojo = new Producto("Hinojo", "Planta de interior", 450, "../media/producto14.jpeg", 3);
+const lima = new Producto("Lima", "Planta de exterior", 900, "../media/producto14.jpeg", 4);
+const linaria = new Producto("Linaria", "Artículo" , 900, "../media/producto14.jpeg", 5);
+const olivo = new Producto("Olivo", "Planta de exterior", 900, "../media/producto14.jpeg", 6);
  
-*/
-const aloe = new Producto("Aloe", "Planta de interior", 450, "../media/producto12.jpeg", 1);
-const palmera = new Producto("Palmera", "Planta de exterior", 450, "../media/producto12.jpeg", 2);
-const cactus = new Producto("Catus", "Planta de interior", 450, "../media/producto12.jpeg", 3);
-const alegria = new Producto("Alegria", "Planta de exterior", 900, "../media/producto12.jpeg", 4);
-const maceta = new Producto("Maceta", "Artículo" , 900, "../media/producto12.jpeg", 5);
-const tulipan = new Producto("Tulipan", "Planta de exterior", 900, "../media/producto12.jpeg", 6);
- 
-const baseDeDatosRopa = [aloe, palmera, cactus, alegria, maceta, tulipan];
+const baseDeDatosRopa = [bidens, galanga, hinojo, lima, linaria, olivo];
  
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
