@@ -1,4 +1,4 @@
-/*
+ 
 let mode = prompt("¿Quieres establecer el modo oscuro? Responda con si o con no.")
 let colorModeInicio = document.getElementById("principal");
 let colorModeFooter = document.getElementById("footer");
@@ -8,7 +8,7 @@ mode==="si" && alert("¡Excelente! Modo oscuro activado, recuerda que puede desa
 
 
 
-const dark = "click";
+/*const dark = "click";
 let botonDark = document.getElementById("moon");
 botonDark.addEventListener ('click', () => {
         let colorMode1 = document.getElementById("principal");
@@ -24,3 +24,4 @@ botonLight.addEventListener ('click', () => {
         footer2.className = ("color2");
 })
 */
+ 
