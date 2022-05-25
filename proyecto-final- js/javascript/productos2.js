@@ -89,28 +89,26 @@ if (mostrarCarrito) {
 function mostrarElCarrito() {
     if (localStorage.length == 0) {
         const msgInicial = document.createElement("h2")
-        msgInicial.innerHTML = "No hay productos en el carrito :("
+        msgInicial.innerHTML = "No hay productos en el carrito"
         contenedorCarrito.appendChild(msgInicial);
     } else {
         renderizarCarrito()
     }
 }
 
+
+
+
 function renderizarCarrito() {
     limpiarCarrito()
     carrito.forEach(producto => {
-        const row = document.createElement('div');
-        row.classList.add("row")
+        const row = document.createElement('tr');
+        row.classList.add("col")
 
         row.innerHTML += `
-            <div class="col">
-                <img class="w-50" src="${producto.img}"/>
-            </div>
-            <div class="col">
-                <h2 class="">${producto.nombre}</h2>
-                <h4>${producto.precio}</h4>
-            </div>
-            <hr/>
+        <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
+        <td>${producto.nombre}</td>
+        <td>${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
     })
@@ -121,3 +119,5 @@ function limpiarCarrito() {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
 }
+
+ 
