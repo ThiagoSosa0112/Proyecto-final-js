@@ -58,6 +58,13 @@ function agregarAlCarrito(e) {
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Producto agregado al carrito',
+        showConfirmButton: false,
+        timer: 1500
+    })
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {

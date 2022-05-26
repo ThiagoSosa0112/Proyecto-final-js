@@ -9,17 +9,7 @@ class Producto {
         this.id = id;
     }
 }
-/*
-const helecho = new Producto("Helecho", "Planta de interior", 1250, "../media/producto2.jpeg", 1);
-const bromelia = new Producto("Bromelia", "Planta de exterior", 250, "../media/producto2.jpeg", 2);
-const bonsai = new Producto("Bonsai", "Planta de interior", 350, "../media/producto2.jpeg", 3);
-const acebo = new Producto("Acebo", "Planta de exterior", 1700, "../media/producto2.jpeg", 4);
-const aralia = new Producto("Aralia", "Artículo" , 600, "../media/producto2.jpeg", 5);
-const boniato = new Producto("Boniato", "Planta de exterior", 700, "../media/producto2.jpeg", 6);
  
-const baseDeDatosRopa = [helecho, bromelia, bonsai, acebo, aralia, boniato];
- 
-*/
 const aloe = new Producto("Aloe", "Planta de interior", 450, "../media/producto12.jpeg", 1);
 const palmera = new Producto("Palmera", "Planta de exterior", 450, "../media/producto12.jpeg", 2);
 const cactus = new Producto("Catus", "Planta de interior", 450, "../media/producto12.jpeg", 3);
@@ -52,20 +42,26 @@ baseDeDatosRopa.forEach((producto) => {
 listaProductos.innerHTML = acumulador;
 
 
-if (listaProductos) { listaProductos.addEventListener("click", agregarAlCarrito); }
+if (listaProductos) {listaProductos.addEventListener("click", agregarAlCarrito); }
 
+ 
 
 
 function agregarAlCarrito(e) {
-    e.preventDefault();
-
-     
+    e.preventDefault();   
     if (e.target.classList.contains("agregar-carrito")) {
-
+        
         const productoSeleccionado = e.target.parentNode;
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Producto agregado al carrito',
+        showConfirmButton: false,
+        timer: 1500
+    })
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {
