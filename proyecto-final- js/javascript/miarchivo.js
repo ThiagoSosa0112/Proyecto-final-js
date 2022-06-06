@@ -1,51 +1,32 @@
 const listaProductos = document.getElementById("ecommerce");
-
-class Producto {
-    constructor(title, description, price, img, id) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.img = img;
-        this.id = id;
-    }
-}
- 
-const aloe = new Producto("Aloe", "Planta de interior", 450, "../media/producto12.jpeg", 1);
-const palmera = new Producto("Palmera", "Planta de exterior", 450, "../media/producto12.jpeg", 2);
-const cactus = new Producto("Catus", "Planta de interior", 450, "../media/producto12.jpeg", 3);
-const alegria = new Producto("Alegria", "Planta de exterior", 900, "../media/producto12.jpeg", 4);
-const maceta = new Producto("Maceta", "Artículo" , 900, "../media/producto12.jpeg", 5);
-const tulipan = new Producto("Tulipan", "Planta de exterior", 900, "../media/producto12.jpeg", 6);
- 
-const baseDeDatosRopa = [aloe, palmera, cactus, alegria, maceta, tulipan];
  
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
  
-let acumulador = ``;
-baseDeDatosRopa.forEach((producto) => {
-    acumulador += `
-  <div class="col">
-    <div class="card" style="width: 20rem;">
-    <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
-      <div class="card-body text-center">
-        <h3 class="card-title titleProd" id="">${producto.title}</h3>
-        <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-        <h4 class="card-text priceProd" id="">$${producto.price}</h4>
-        <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+fetch("../dataproductos.json")
+.then((res) => res.json())
+.then((data) => {
+    data.forEach((producto) => {
+        const section = document.createElement("section");
+        section.innerHTML = `
+    <div class="col">
+      <div class="card" style="width: 20rem;">
+      <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
+        <div class="card-body text-center">
+          <h3 class="card-title titleProd" id="">${producto.title}</h3>
+          <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
+          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+        </div>
       </div>
-    </div>
-  </div>`;
-});
+    </div>`;
 
-
-listaProductos.innerHTML = acumulador;
-
+    listaProductos.append(section);
+    });
+  });
 
 if (listaProductos) {listaProductos.addEventListener("click", agregarAlCarrito); }
 
  
-
 
 function agregarAlCarrito(e) {
     e.preventDefault();   
@@ -55,20 +36,12 @@ function agregarAlCarrito(e) {
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Producto agregado al carrito',
-        showConfirmButton: false,
-        timer: 1500
-    })
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {
         nombre: productoCard.querySelector(".titleProd").textContent,
         modelo: productoCard.querySelector(".descriptionProd").textContent,
         precio: productoCard.querySelector(".priceProd").textContent,
-        
         img: productoCard.parentNode.querySelector(".imgProd").src
     };
 
@@ -92,8 +65,8 @@ if (mostrarCarrito) {
 }
 function mostrarElCarrito() {
     if (localStorage.length == 0) {
-        const msgInicial = document.createElement("h2")
-        msgInicial.innerHTML = "No hay productos en el carrito"
+        const msgInicial = document.createElement("h3")
+        msgInicial.innerHTML = "No hay productos agregados"
         contenedorCarrito.appendChild(msgInicial);
     } else {
         renderizarCarrito()
@@ -101,8 +74,10 @@ function mostrarElCarrito() {
 }
 
 function renderizarCarrito() {
-    limpiarCarrito()
+    limpiarCarrito();
+    
     carrito.forEach(producto => {
+        
         const row = document.createElement('tr');
         row.classList.add("col")
 
@@ -112,12 +87,56 @@ function renderizarCarrito() {
         <td>${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
+        
+        
+        
     })
 }
-
 
 function limpiarCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
+}
+/*--------------------Vaciar carrito--------------------*/
+const vaciar = document.getElementById('vaciar')
+vaciar.addEventListener ('click', () =>{
+   limpiarCarrito();
+    localStorage.clear();
+
+})
+
+
+
+
+/*--------------Sumar total---------------*/
+const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0)
+console.log(total)
+ 
+/*--------------------Formulario de finalizar compra------------------------*/
+
+const inpNombre = document.querySelector("#nombre-compra");
+const inpEmail = document.querySelector("#mail-compra");
+const inpTelefono = document.querySelector("#telefono-compra");
+const inpDNI = document.querySelector("#dni-compra");
+const inpPago = document.querySelector("#pago-compra"); 
+const inpEntrega = document.querySelector("#entrega-compra"); 
+const btnEnviar = document.querySelector("#pagar-compra");
+btnEnviar.addEventListener("click", formEnviar);
+
+function formEnviar(e) {
+    e.preventDefault();
+    console.log(inpNombre.value);
+    console.log(inpEmail.value);
+    console.log(inpTelefono.value);
+    console.log(inpDNI.value);
+    console.log(inpPago.value);
+    console.log(inpEntrega.value);
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Su pago fue realizado',
+        showConfirmButton: false,
+        timer: 1500
+    })
 }

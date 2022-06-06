@@ -3,6 +3,10 @@ let botonDark = document.getElementById("moon");
 botonDark.addEventListener ('click', () => {
         let colorMode1 = document.getElementById("principal");
         colorMode1.className = ("color");
+        let header = document.getElementById("top")
+        header.className = ("color");
+        let titulo = document.getElementById("titulo");
+        titulo.className = ("color-white")
         let footer1 = document.getElementById("footer");
         footer1.className = ("color");
         Swal.fire({
@@ -19,6 +23,10 @@ let botonLight = document.getElementById("sun");
 botonLight.addEventListener ('click', () => {
         let colorMode2 = document.getElementById("principal");
         colorMode2.className = ("color2");
+        let header = document.getElementById("top")
+        header.className = ("color2")
+        let titulo = document.getElementById("titulo");
+        titulo.className = ("color-black")
         let footer2 = document.getElementById("footer");
         footer2.className = ("color2");
         Swal.fire({

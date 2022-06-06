@@ -13,8 +13,8 @@
     <title>Vivero "El Paraíso"</title>
 </head>
 <body id="principal">
-  <section id="g1">
-    <header class="top">
+   <header id="top">
+    <header id="top">
       <h1 id = "titulo">Vivero "El Paraíso"</h1>
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -95,16 +95,73 @@
           <tbody id="carrito">
         
           </tbody>
-          
-          </table>
+        </table>
       </div>
+      <button id="vaciar"  class="btn btn-primary w-100">Vaciar carrito</button>
+      
+        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            Finalizar compra
+          </button>  
     </div>
   </div>
 </div>
-   
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="" enctype="">
+          <fieldset> 
+    
+              <div>
+                <label for="">Nombre y apellido</label>
+                <br>
+                  <input type="text" name="Nombre" id="nombre-compra" required>
+              </div>
+              <div>
+                <label for="">Email</label>
+                <br>
+                  <input type="email" name="Email" id="mail-compra" required>
+              </div>
+              <div>
+                <label for="">DNI</label>
+                <br>
+                  <input type="number" name="Mensaje" id="dni-compra" required>
+              </div>
+              <div>
+                <label for="">Teléfono</label>
+                <br>
+                  <input type="number" name="Mensaje" id="telefono-compra" required>
+              </div>
+              <div>
+                <br>
+                <select id="pago-compra" class="form-select" aria-label="Default select example">
+                  <option selected>Seleccione método de pago</option>
+                  <option value="Mercado Pago">Mercado Pago/Débito</option>
+                  <option value="Efectivo">Efectivo</option>
+                </select>
+              </div>
+              <br>
+              <div>  
+              <select class="form-select" id="entrega-compra" aria-label="Default select example">
+                <option selected>Forma de entrega</option>
+                <option value="Domicilio">Domicilio</option>
+                <option value="En el local">En el local</option> 
+              </select>
+              </div>
+              <br>
+               <input type="submit" id="pagar-compra" value="Enviar"/>
+          </div>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
 
- 
-   
+
    <section>
     <nav aria-label="Page navigation example">
       <ul class="pagination">
@@ -137,8 +194,7 @@
 </section>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="../javascript/prompt.js"></script>
-<script src="../javascript/mode.js"></script>
+ <script src="../javascript/mode.js"></script>
 <script src="../javascript/miarchivo.js"></script>
              
 </body>

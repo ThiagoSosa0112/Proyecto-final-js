@@ -1,45 +1,30 @@
 const listaProductos = document.getElementById("ecommerce");
 
-class Producto {
-    constructor(title, description, price, img, id) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.img = img;
-        this.id = id;
-    }
-}
- 
-const bidens = new Producto("Bidens", "Planta de interior", 450, "../media/producto14.jpeg", 1);
-const galanga = new Producto("Galanga", "Planta de exterior", 450, "../media/producto14.jpeg", 2);
-const hinojo = new Producto("Hinojo", "Planta de interior", 450, "../media/producto14.jpeg", 3);
-const lima = new Producto("Lima", "Planta de exterior", 900, "../media/producto14.jpeg", 4);
-const linaria = new Producto("Linaria", "Artículo" , 900, "../media/producto14.jpeg", 5);
-const olivo = new Producto("Olivo", "Planta de exterior", 900, "../media/producto14.jpeg", 6);
- 
-const baseDeDatosRopa = [bidens, galanga, hinojo, lima, linaria, olivo];
- 
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
  
-let acumulador = ``;
-baseDeDatosRopa.forEach((producto) => {
-    acumulador += `
-  <div class="col">
-    <div class="card" style="width: 20rem;">
-    <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
-      <div class="card-body text-center">
-        <h3 class="card-title titleProd" id="">${producto.title}</h3>
-        <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-        <h4 class="card-text priceProd" id="">$${producto.price}</h4>
-        <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+fetch("../dataproductos3.json")
+.then((res) => res.json())
+.then((data) => {
+    data.forEach((producto) => {
+        const section = document.createElement("section");
+        section.innerHTML = `
+    <div class="col">
+      <div class="card" style="width: 20rem;">
+      <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
+        <div class="card-body text-center">
+          <h3 class="card-title titleProd" id="">${producto.title}</h3>
+          <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
+          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+        </div>
       </div>
-    </div>
-  </div>`;
-});
+    </div>`;
+
+    listaProductos.append(section);
+    });
+  });
 
 
-listaProductos.innerHTML = acumulador;
 
 
 if (listaProductos) { listaProductos.addEventListener("click", agregarAlCarrito); }
@@ -56,13 +41,7 @@ function agregarAlCarrito(e) {
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Producto agregado al carrito',
-        showConfirmButton: false,
-        timer: 1500
-    })
+ 
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {
@@ -121,4 +100,38 @@ function limpiarCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
+}
+
+const vaciar = document.getElementById('vaciar')
+vaciar.addEventListener ('click', () =>{
+   limpiarCarrito();
+    localStorage.clear();
+
+})
+
+
+const inpNombre = document.querySelector("#nombre-compra-3");
+const inpEmail = document.querySelector("#mail-compra-3");
+const inpTelefono = document.querySelector("#telefono-compra-3");
+const inpDNI = document.querySelector("#dni-compra-3");
+const inpPago = document.querySelector("#pago-compra-3"); 
+const inpEntrega = document.querySelector("#entrega-compra-3"); 
+const btnEnviar = document.querySelector("#pagar-compra-3");
+btnEnviar.addEventListener("click", formEnviar);
+
+function formEnviar(e) {
+    e.preventDefault();
+    console.log(inpNombre.value);
+    console.log(inpEmail.value);
+    console.log(inpTelefono.value);
+    console.log(inpDNI.value);
+    console.log(inpPago.value);
+    console.log(inpEntrega.value);
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Su pago fue realizado',
+        showConfirmButton: false,
+        timer: 1500
+    })
 }

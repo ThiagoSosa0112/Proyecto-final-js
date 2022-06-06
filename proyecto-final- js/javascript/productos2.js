@@ -1,47 +1,28 @@
 const listaProductos = document.getElementById("ecommerce");
 
-class Producto {
-    constructor(title, description, price, img, id) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.img = img;
-        this.id = id;
-    }
-}
-
-const helecho = new Producto("Helecho", "Planta de interior", 1250, "../media/producto2.jpeg", 1);
-const bromelia = new Producto("Bromelia", "Planta de exterior", 250, "../media/producto2.jpeg", 2);
-const bonsai = new Producto("Bonsai", "Planta de interior", 350, "../media/producto2.jpeg", 3);
-const acebo = new Producto("Acebo", "Planta de exterior", 1700, "../media/producto2.jpeg", 4);
-const aralia = new Producto("Aralia", "Artículo" , 600, "../media/producto2.jpeg", 5);
-const boniato = new Producto("Boniato", "Planta de exterior", 700, "../media/producto2.jpeg", 6);
- 
-const baseDeDatosRopa = [helecho, bromelia, bonsai, acebo, aralia, boniato];
- 
-
- 
 const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
  
-let acumulador = ``;
-baseDeDatosRopa.forEach((producto) => {
-    acumulador += `
-  <div class="col">
-    <div class="card" style="width: 20rem;">
-    <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
-      <div class="card-body text-center">
-        <h3 class="card-title titleProd" id="">${producto.title}</h3>
-        <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-        <h4 class="card-text priceProd" id="">$${producto.price}</h4>
-        <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+fetch("../dataproductos2.json")
+.then((res) => res.json())
+.then((data) => {
+    data.forEach((producto) => {
+        const section = document.createElement("section");
+        section.innerHTML = `
+    <div class="col">
+      <div class="card" style="width: 20rem;">
+      <img src="${producto.img}" class="card-img-top imgProd" style="height: 16rem;" alt="...">
+        <div class="card-body text-center">
+          <h3 class="card-title titleProd" id="">${producto.title}</h3>
+          <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
+          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+        </div>
       </div>
-    </div>
-  </div>`;
-});
+    </div>`;
 
-
-listaProductos.innerHTML = acumulador;
+    listaProductos.append(section);
+    });
+  });
 
 
 if (listaProductos) { listaProductos.addEventListener("click", agregarAlCarrito); }
@@ -58,13 +39,7 @@ function agregarAlCarrito(e) {
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Producto agregado al carrito',
-        showConfirmButton: false,
-        timer: 1500
-    })
+   
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {
@@ -127,4 +102,35 @@ function limpiarCarrito() {
     }
 }
 
- 
+const vaciar = document.getElementById('vaciar')
+vaciar.addEventListener ('click', () =>{
+   limpiarCarrito();
+    localStorage.clear();
+
+})
+
+const inpNombre = document.querySelector("#nombre-compra-2");
+const inpEmail = document.querySelector("#mail-compra-2");
+const inpTelefono = document.querySelector("#telefono-compra-2");
+const inpDNI = document.querySelector("#dni-compra-2");
+const inpPago = document.querySelector("#pago-compra-2"); 
+const inpEntrega = document.querySelector("#entrega-compra-2"); 
+const btnEnviar = document.querySelector("#pagar-compra-2");
+btnEnviar.addEventListener("click", formEnviar);
+
+function formEnviar(e) {
+    e.preventDefault();
+    console.log(inpNombre.value);
+    console.log(inpEmail.value);
+    console.log(inpTelefono.value);
+    console.log(inpDNI.value);
+    console.log(inpPago.value);
+    console.log(inpEntrega.value);
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Su pago fue realizado',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
