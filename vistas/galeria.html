@@ -15,7 +15,7 @@
 </head>
 <body id="principal">
   <section id="g1">
-    <header class="top">
+    <header id="top">
       <h1 id = "titulo">Vivero "El Paraíso"</h1>
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -67,7 +67,56 @@
     </nav>
   </header> 
  </section>
-  
+ <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../media/ini.png" id="img-carrusel" class="img-fluid" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../media/vivero-parte1.jpg" id="img-carrusel" class="img-fluid" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../media/vivero-parte2.jpg" id="img-carrusel" class="img-fluid" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<section class="empleados">
+  <div class="card">
+    <img src="../media/gustavo.webp" class="img-fluid" alt="...">
+    <div class="card-body">
+      <p class="card-text">Él es Gonzalo, encargado de los envíos del vivero</p>
+    </div>
+  </div>
+<div class="card">
+  <img src="../media/emilia.jpg" class="img-fluid" alt="...">
+  <div class="card-body">
+    <p class="card-text">Ella es Jessica, encargada del vivero</p>
+  </div>
+</div>
+<div class="card">
+  <img src="../media/gustavo.webp" class="img-fluid" alt="...">
+  <div class="card-body">
+    <p class="card-text">Él es Alan, atiende a los clientes</p>
+  </div>
+</div>
+</div>
+</section>
+
+<section>
   <section> 
     <footer  id="footer">
     <div class="py-3 my-4">
@@ -89,8 +138,7 @@
   </section>
     
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="../javascript/prompt.js"></script>
-<script src="../javascript/mode.js"></script>
+ <script src="../javascript/mode.js"></script>
 <script src="../javascript/miarchivo.js"></script>
 </body>
 </html>

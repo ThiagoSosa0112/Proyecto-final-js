@@ -66,7 +66,7 @@ if (mostrarCarrito) {
 function mostrarElCarrito() {
     if (localStorage.length == 0) {
         const msgInicial = document.createElement("h3")
-        msgInicial.innerHTML = "No hay productos en el carrito"
+        msgInicial.innerHTML = "No hay productos agregados"
         contenedorCarrito.appendChild(msgInicial);
     } else {
         renderizarCarrito()
@@ -74,7 +74,7 @@ function mostrarElCarrito() {
 }
 
 function renderizarCarrito() {
-    limpiarCarrito ()
+    limpiarCarrito();
     
     carrito.forEach(producto => {
         
@@ -87,25 +87,32 @@ function renderizarCarrito() {
         <td>${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
-
+        
         
         
     })
 }
-
-/*--------------Sumar total---------------*/
-const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0)
-console.log(total)
- 
 
 function limpiarCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
 }
+/*--------------------Vaciar carrito--------------------*/
+const vaciar = document.getElementById('vaciar')
+vaciar.addEventListener ('click', () =>{
+   limpiarCarrito();
+    localStorage.clear();
+
+})
 
 
 
+
+/*--------------Sumar total---------------*/
+const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0)
+console.log(total)
+ 
 /*--------------------Formulario de finalizar compra------------------------*/
 
 const inpNombre = document.querySelector("#nombre-compra");

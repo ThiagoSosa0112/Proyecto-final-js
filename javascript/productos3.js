@@ -102,6 +102,13 @@ function limpiarCarrito() {
     }
 }
 
+const vaciar = document.getElementById('vaciar')
+vaciar.addEventListener ('click', () =>{
+   limpiarCarrito();
+    localStorage.clear();
+
+})
+
 
 const inpNombre = document.querySelector("#nombre-compra-3");
 const inpEmail = document.querySelector("#mail-compra-3");
