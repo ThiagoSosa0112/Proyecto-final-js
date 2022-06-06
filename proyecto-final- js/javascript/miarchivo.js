@@ -14,7 +14,7 @@ fetch("../dataproductos.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <h4 class="card-text priceProd" id=""> <span class="decoracion">$</span>${producto.price}</h4> 
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
       </div>
@@ -84,7 +84,7 @@ function renderizarCarrito() {
         row.innerHTML += `
         <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
         <td>${producto.nombre}</td>
-        <td>${producto.precio}</td>
+        <td>$${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
         
@@ -103,16 +103,16 @@ const vaciar = document.getElementById('vaciar')
 vaciar.addEventListener ('click', () =>{
    limpiarCarrito();
     localStorage.clear();
-
 })
 
 
 
 
 /*--------------Sumar total---------------*/
-const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0)
-console.log(total)
- 
+  
+ const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0 )
+ console.log(total);
+
 /*--------------------Formulario de finalizar compra------------------------*/
 
 const inpNombre = document.querySelector("#nombre-compra");
