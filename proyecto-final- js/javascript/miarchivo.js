@@ -14,7 +14,7 @@ fetch("../dataproductos.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id=""> <span class="decoracion">$ </span> ${producto.price}</h4> 
+          <h4 class="card-text priceProd" id="">${producto.price}</h4> 
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
       </div>
@@ -43,6 +43,7 @@ function obtenerDatos(productoCard) {
         modelo: productoCard.querySelector(".descriptionProd").textContent,
         precio: productoCard.querySelector(".priceProd").textContent,
         img: productoCard.parentNode.querySelector(".imgProd").src
+ 
     };
 
     console.log(datosProducto);
@@ -50,7 +51,6 @@ function obtenerDatos(productoCard) {
     console.log(carrito);
     guardarStorage();
 }
-
 function guardarStorage() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
@@ -61,7 +61,7 @@ const mostrarCarrito = document.querySelector("#mostrar-carrito")
 
 if (mostrarCarrito) {
     mostrarCarrito.addEventListener('click', mostrarElCarrito)
-
+    
 }
 function mostrarElCarrito() {
     if (localStorage.length == 0) {
@@ -80,35 +80,41 @@ function renderizarCarrito() {
         
         const row = document.createElement('tr');
         row.classList.add("col")
-
+        
         row.innerHTML += `
         <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
         <td>${producto.nombre}</td>
-        <td>${producto.precio}</td>
+        <td>$${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
+        
+        
+        
     })
 }
 
 function limpiarCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
+        verTotal.remove
     }
 }
 /*--------------------Vaciar carrito--------------------*/
 const vaciar = document.getElementById('vaciar')
 vaciar.addEventListener ('click', () =>{
    limpiarCarrito();
-    localStorage.clear();
+   localStorage.clear();
 })
 
 
 
-
 /*--------------Sumar total---------------*/
-  
- const total = carrito.reduce((acc, elemento)=> acc + elemento.precio, 0 )
- console.log(total);
+
+    const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
+    console.log(total);
+
+    let verTotal = document.getElementById("total");
+    verTotal.innerHTML = "Precio Total $" + total;
 
 /*--------------------Formulario de finalizar compra------------------------*/
 
