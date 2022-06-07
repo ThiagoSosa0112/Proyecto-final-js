@@ -14,7 +14,7 @@ fetch("../dataproductos.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id=""> <span class="decoracion">$</span>${producto.price}</h4> 
+          <h4 class="card-text priceProd" id=""> <span class="decoracion">$ </span> ${producto.price}</h4> 
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
       </div>
@@ -84,12 +84,9 @@ function renderizarCarrito() {
         row.innerHTML += `
         <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
         <td>${producto.nombre}</td>
-        <td>$${producto.precio}</td>
+        <td>${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
-        
-        
-        
     })
 }
 
