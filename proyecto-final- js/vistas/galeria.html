@@ -16,25 +16,25 @@
 <body id="principal">
   <section id="g1">
     <header id="top">
-      <h1 id = "titulo">Vivero "El Paraíso"</h1>
+      <h1 id="titulo">Vivero "El Paraíso"</h1>
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="tipsycuidados.html">Tips y cudados</a>
+                <a class="nav-link active" aria-current="page" href="./vistas/tipsycuidados.html">Tips y cudados</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="contacto.html">Contacto</a>
+                <a class="nav-link active" href="./vistas/contacto.html">Contacto</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="galeria.html">Galería</a>
+                <a class="nav-link active" href="./vistas/galeria.html">Galería</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="productos.html">Productos</a>
+                <a class="nav-link active" href="./vistas/productos.html">Productos</a>
               </li>
            
               <li>
@@ -59,7 +59,7 @@
   </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>      
@@ -94,26 +94,8 @@
   </button>
 </div>
 
-<section class="empleados">
-  <div class="card">
-    <img src="../media/gustavo.webp" class="img-fluid" alt="...">
-    <div class="card-body">
-      <p class="card-text">Él es Gonzalo, encargado de los envíos del vivero</p>
-    </div>
-  </div>
-<div class="card">
-  <img src="../media/emilia.jpg" class="img-fluid" alt="...">
-  <div class="card-body">
-    <p class="card-text">Ella es Jessica, encargada del vivero</p>
-  </div>
-</div>
-<div class="card">
-  <img src="../media/gustavo.webp" class="img-fluid" alt="...">
-  <div class="card-body">
-    <p class="card-text">Él es Alan, atiende a los clientes</p>
-  </div>
-</div>
-</div>
+<section id="employers" class="empleados">
+ 
 </section>
 
 <section>
@@ -136,10 +118,10 @@
     </div>
     </footer>
   </section>
-    
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- <script src="../javascript/mode.js"></script>
-<script src="../javascript/miarchivo.js"></script>
+  <script src="../javascript/mode.js"></script>
+  <script src="../javascript/empleados.js"></script>
 </body>
 </html>
 
