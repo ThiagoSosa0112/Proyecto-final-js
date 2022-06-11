@@ -14,15 +14,15 @@ fetch("../dataproductos3.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <h4>$ <span class="card-text priceProd" id="" >${producto.price}</span> </h4>
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
-      </div>
-    </div>`;
-
-    listaProductos.append(section);
+        </div>
+        </div>`;
+        
+        listaProductos.append(section);
     });
-  });
+});
 
 
 
@@ -33,15 +33,15 @@ if (listaProductos) { listaProductos.addEventListener("click", agregarAlCarrito)
 
 function agregarAlCarrito(e) {
     e.preventDefault();
-
-     
+    
+    
     if (e.target.classList.contains("agregar-carrito")) {
-
+        
         const productoSeleccionado = e.target.parentNode;
         console.log(productoSeleccionado);
         obtenerDatos(productoSeleccionado);
     }
- 
+    
 }
 function obtenerDatos(productoCard) {
     const datosProducto = {
@@ -51,7 +51,7 @@ function obtenerDatos(productoCard) {
         
         img: productoCard.parentNode.querySelector(".imgProd").src
     };
-
+    
     console.log(datosProducto);
     carrito.push(datosProducto);
     console.log(carrito);
@@ -68,7 +68,7 @@ const mostrarCarrito = document.querySelector("#mostrar-carrito")
 
 if (mostrarCarrito) {
     mostrarCarrito.addEventListener('click', mostrarElCarrito)
-
+    
 }
 function mostrarElCarrito() {
     if (localStorage.length == 0) {
@@ -85,13 +85,18 @@ function renderizarCarrito() {
     carrito.forEach(producto => {
         const row = document.createElement('tr');
         row.classList.add("col")
-
+        
         row.innerHTML += `
         <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
         <td>${producto.nombre}</td>
-        <td>${producto.precio}</td>
+        <td>$${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
+        const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
+        console.log(total);
+        
+        let verTotal = document.getElementById("total");
+        verTotal.innerHTML = "Precio Total $" + total;
     })
 }
 
@@ -103,11 +108,13 @@ function limpiarCarrito() {
 }
 
 const vaciar = document.getElementById('vaciar')
-vaciar.addEventListener ('click', () =>{
-   limpiarCarrito();
+vaciar.addEventListener ('click', (vaciarCarro))
+ function vaciarCarro () {
     localStorage.clear();
+    limpiarCarrito();    
+}
 
-})
+
 
 
 const inpNombre = document.querySelector("#nombre-compra-3");

@@ -14,7 +14,7 @@ fetch("../dataproductos.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id="">${producto.price}</h4> 
+           <h4>$ <span class="card-text priceProd" id="" >${producto.price}</span> </h4>
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
       </div>
@@ -88,33 +88,29 @@ function renderizarCarrito() {
         `
         contenedorCarrito.appendChild(row)
         
+        const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
+        console.log(total);
         
+        let verTotal = document.getElementById("total");
+        verTotal.innerHTML = "Precio Total $" + total;
         
+         
     })
 }
-
 function limpiarCarrito() {
     while (contenedorCarrito.firstChild) {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
-        verTotal.remove
     }
 }
 /*--------------------Vaciar carrito--------------------*/
 const vaciar = document.getElementById('vaciar')
-vaciar.addEventListener ('click', () =>{
-   limpiarCarrito();
-   localStorage.clear();
-})
+vaciar.addEventListener ('click', (vaciarCarro))
+ function vaciarCarro () {
+    localStorage.clear();
+    limpiarCarrito();    
+}
+ 
 
-
-
-/*--------------Sumar total---------------*/
-
-    const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
-    console.log(total);
-
-    let verTotal = document.getElementById("total");
-    verTotal.innerHTML = "Precio Total $" + total;
 
 /*--------------------Formulario de finalizar compra------------------------*/
 

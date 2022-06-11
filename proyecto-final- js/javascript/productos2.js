@@ -14,7 +14,7 @@ fetch("../dataproductos2.json")
         <div class="card-body text-center">
           <h3 class="card-title titleProd" id="">${producto.title}</h3>
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
-          <h4 class="card-text priceProd" id="">$${producto.price}</h4>
+          <h4>$ <span class="card-text priceProd" id="" >${producto.price}</span> </h4>
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
         </div>
       </div>
@@ -90,9 +90,15 @@ function renderizarCarrito() {
         row.innerHTML += `
         <td><img src="${producto.img}" style = "width: 10rem;"></img></td>
         <td>${producto.nombre}</td>
-        <td>${producto.precio}</td>
+        <td>$${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
+        
+        const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
+        console.log(total);
+        
+        let verTotal = document.getElementById("total");
+        verTotal.innerHTML = "Precio Total $" + total;
     })
 }
 
@@ -103,11 +109,13 @@ function limpiarCarrito() {
 }
 
 const vaciar = document.getElementById('vaciar')
-vaciar.addEventListener ('click', () =>{
-   limpiarCarrito();
+vaciar.addEventListener ('click', (vaciarCarro))
+ function vaciarCarro () {
     localStorage.clear();
+    limpiarCarrito();    
+}
 
-})
+
 
 const inpNombre = document.querySelector("#nombre-compra-2");
 const inpEmail = document.querySelector("#mail-compra-2");

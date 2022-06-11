@@ -1,6 +1,5 @@
 const empleadoSection = document.getElementById("employers");
 
- 
 fetch("../empleados.json")
 .then((res) => res.json())
 .then((datos) => {
