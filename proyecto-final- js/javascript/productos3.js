@@ -27,7 +27,7 @@ fetch("../dataproductos3.json")
 
 
 
-if (listaProductos) { listaProductos.addEventListener("click", agregarAlCarrito); }
+listaProductos && listaProductos.addEventListener("click", agregarAlCarrito);
 
 
 
@@ -106,7 +106,8 @@ function limpiarCarrito() {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
 }
-
+const volver = document.getElementById('volver-inicio-3')
+volver.addEventListener ('click', (vaciarCarro))
 const vaciar = document.getElementById('vaciar')
 vaciar.addEventListener ('click', (vaciarCarro))
  function vaciarCarro () {

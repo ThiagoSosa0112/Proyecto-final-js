@@ -6,7 +6,10 @@
 }
 #mostrar-carrito{
     margin-top: 9px;
-    margin-left: 5px;
+    margin-left: 9px;
+}
+#volver-inicio{
+    margin-top: 5px;
 }
 .color{
     background-color: black;
@@ -17,7 +20,9 @@
 .color-black{
     color: black;
 }
-
+#finalizar{
+    margin-top: 5px;
+}
 .producto{
     width: 18rem;
     padding: 10px;
@@ -36,7 +41,7 @@
 }
  #sun{
      margin-top: 9px;
-     margin-left: 5px;
+     margin-left: 9px;
  }
 #luna{
     margin-top: 9px;
@@ -75,6 +80,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+  
 }
 
 .menup li {
@@ -121,6 +127,7 @@
     background-position: center;
     object-fit: cover;
     width: 100%;
+    gap: 50px;
 }
 
 #carouselExampleIndicators{

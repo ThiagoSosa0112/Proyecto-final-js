@@ -60,7 +60,7 @@
   </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" id="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>      
@@ -100,7 +100,7 @@
       </div>
       <button id="vaciar" onclick="location.href='productos.html';"  class="btn btn-primary w-100">Vaciar carrito</button>
       
-        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+        <button type="button" class="btn btn-primary w-100" id="finalizar" data-bs-toggle="modal" data-bs-target="#exampleModal1">
             Finalizar compra
           </button>  
     </div>
@@ -110,7 +110,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title"   id="exampleModalLabel">Finalizar compra</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -154,7 +154,11 @@
               </select>
               </div>
               <br>
-               <input type="submit" id="pagar-compra" value="Enviar"/>
+               <input type="submit"  id="pagar-compra" class="btn btn-primary w-100" value="Enviar"/>
+               <button type="button" onclick="location.href='../index.html';" id="volver-inicio" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                Volver al Inicio
+              </button>  
+               
           </div>
       </fieldset>
       </form>
@@ -176,13 +180,13 @@
    <section> 
      <footer id="footer" >
        <div class="py-3 my-4">
-         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
-           <li class="nav-item"><a href="./vistas/tipsycuidados.html" class="nav-link px-2 text-muted">Tips y cuidados</a></li>
-           <li class="nav-item"><a href="./vistas/productos.html" class="nav-link px-2 text-muted">Productos</a></li>
-           <li class="nav-item"><a href="./vistas/galeria.html" class="nav-link px-2 text-muted">Galería</a></li>
-           <li class="nav-item"><a href="./vistas/contacto.html" class="nav-link px-2 text-muted">Contacto</a></li>
-          </ul>
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+          <li class="nav-item"><a href="../vistas/tipsycuidados.html" class="nav-link px-2 text-muted">Tips y cuidados</a></li>
+          <li class="nav-item"><a href="../vistas/productos.html" class="nav-link px-2 text-muted">Productos</a></li>
+          <li class="nav-item"><a href="../vistas/galeria.html" class="nav-link px-2 text-muted">Galería</a></li>
+          <li class="nav-item"><a href="../vistas/contacto.html" class="nav-link px-2 text-muted">Contacto</a></li>
+        </ul>
       <p class="text-center text-muted">Este vivero tiene todo lo que estás buscando, no dudes en contactarnos para hacer más feliz a tu jardín.</p>
       <ul> 
         <li>
@@ -194,7 +198,7 @@
 </section>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
- <script src="../javascript/mode.js"></script>
+<script src="../javascript/mode.js"></script>
 <script src="../javascript/miarchivo.js"></script>
              
 </body>

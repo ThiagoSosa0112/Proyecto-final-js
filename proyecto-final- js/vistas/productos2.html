@@ -99,8 +99,8 @@
       </div>
       <button id="vaciar" onclick="location.href='productos2.html';"  class="btn btn-primary w-100">Vaciar carrito</button>
       
-      <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-          Finalizar compra
+      <button type="button" class="btn btn-primary w-100" id="finalizar" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+        Finalizar compra
         </button>  
     </div>
   </div>
@@ -153,7 +153,10 @@
               </select>
               </div>
               <br>
-               <input type="submit" id="pagar-compra-2" value="Enviar"/>
+              <input type="submit"  id="pagar-compra-2" class="btn btn-primary w-100" value="Enviar"/>
+              <button type="button" onclick="location.href='../index.html';" id="volver-inicio" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                Volver al Inicio
+              </button>  
           </div>
       </fieldset>
       </form>
@@ -174,12 +177,12 @@
    </section>
     <footer  id="footer">
     <div class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
-        <li class="nav-item"><a href="./vistas/tipsycuidados.html" class="nav-link px-2 text-muted">Tips y cuidados</a></li>
-        <li class="nav-item"><a href="./vistas/productos.html" class="nav-link px-2 text-muted">Productos</a></li>
-        <li class="nav-item"><a href="./vistas/galeria.html" class="nav-link px-2 text-muted">Galería</a></li>
-        <li class="nav-item"><a href="./vistas/contacto.html" class="nav-link px-2 text-muted">Contacto</a></li>
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="../index.html" class="nav-link px-2 text-muted">Inicio</a></li>
+        <li class="nav-item"><a href="../vistas/tipsycuidados.html" class="nav-link px-2 text-muted">Tips y cuidados</a></li>
+        <li class="nav-item"><a href="../vistas/productos.html" class="nav-link px-2 text-muted">Productos</a></li>
+        <li class="nav-item"><a href="../vistas/galeria.html" class="nav-link px-2 text-muted">Galería</a></li>
+        <li class="nav-item"><a href="../vistas/contacto.html" class="nav-link px-2 text-muted">Contacto</a></li>
       </ul>
       <p class="text-center text-muted">Este vivero tiene todo lo que estás buscando, no dudes en contactarnos para hacer más feliz a tu jardín.</p>
       <ul> 

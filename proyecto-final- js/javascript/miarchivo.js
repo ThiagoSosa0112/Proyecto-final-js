@@ -1,7 +1,9 @@
 const listaProductos = document.getElementById("ecommerce");
  
-const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
  
+const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+const productos = []
+
 fetch("../dataproductos.json")
 .then((res) => res.json())
 .then((data) => {
@@ -16,17 +18,20 @@ fetch("../dataproductos.json")
           <h4 class="card-text descriptionProd" id="">${producto.description}</h4>
            <h4>$ <span class="card-text priceProd" id="" >${producto.price}</span> </h4>
           <button data-id="${producto.id}" class="btn btn-primary agregar-carrito">Agregar</button>
+        </div> 
         </div>
-      </div>
-    </div>`;
-
-    listaProductos.append(section);
+        </div>`;
+        
+        listaProductos.append(section);
+        productos.push(section);
     });
-  });
+});
 
-if (listaProductos) {listaProductos.addEventListener("click", agregarAlCarrito); }
+ listaProductos && listaProductos.addEventListener("click", agregarAlCarrito);
 
- 
+function guardarStorage() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
 function agregarAlCarrito(e) {
     e.preventDefault();   
@@ -50,9 +55,6 @@ function obtenerDatos(productoCard) {
     carrito.push(datosProducto);
     console.log(carrito);
     guardarStorage();
-}
-function guardarStorage() {
-    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
 const contenedorCarrito = document.querySelector("#carrito")
@@ -102,7 +104,8 @@ function limpiarCarrito() {
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)
     }
 }
-/*--------------------Vaciar carrito--------------------*/
+const volver = document.getElementById('volver-inicio')
+volver.addEventListener ('click', (vaciarCarro))
 const vaciar = document.getElementById('vaciar')
 vaciar.addEventListener ('click', (vaciarCarro))
  function vaciarCarro () {
@@ -111,8 +114,6 @@ vaciar.addEventListener ('click', (vaciarCarro))
 }
  
 
-
-/*--------------------Formulario de finalizar compra------------------------*/
 
 const inpNombre = document.querySelector("#nombre-compra");
 const inpEmail = document.querySelector("#mail-compra");
@@ -131,7 +132,7 @@ function formEnviar(e) {
     console.log(inpDNI.value);
     console.log(inpPago.value);
     console.log(inpEntrega.value);
-    Swal.fire({
+     Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Su pago fue realizado',
@@ -139,3 +140,4 @@ function formEnviar(e) {
         timer: 1500
     })
 }
+
