@@ -89,12 +89,11 @@ function renderizarCarrito() {
         <td>$${producto.precio}</td>
         `
         contenedorCarrito.appendChild(row)
-        
+
         const total = carrito.reduce((acc, elemento)=> acc + (parseInt(elemento.precio)), 0)
-        console.log(total);
-        
         let verTotal = document.getElementById("total");
-        verTotal.innerHTML = "Precio Total $" + total;
+        let priceDiscount = total - 500;
+        total <= 3000?  verTotal.innerHTML = "Precio Total $" + total : verTotal.innerHTML = "Precio Total: $" +"<s>"+ total +"</s> $" + priceDiscount + " Obtienes un descuento";
         
          
     })
